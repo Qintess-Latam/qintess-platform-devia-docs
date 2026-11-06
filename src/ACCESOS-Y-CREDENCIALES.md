@@ -11,7 +11,9 @@
 | Ítem | Valor |
 |---|---|
 | VM / laptop que corre todo | `192.168.50.208` (IP interna, puede cambiar — ver RUNBOOK-vm-qintess-latam.md) |
-| IP pública (port forwarding, sin dominio) | `201.203.104.168` (puertos 3000 → Coder, 7007 → Symphony) |
+| **Coder** (workspaces) | **https://201.203.104.168:3000** |
+| **Symphony** (Backstage, crear repos vía mozart) | **https://201.203.104.168:7007** |
+| IP pública (sin dominio, port forwarding manual en el router) | `201.203.104.168` |
 | Acceso SSH a la VM | `[PENDIENTE: usuario, método de auth (key/password), quién tiene acceso hoy]` — no está en `secrets.txt`, falta documentar de verdad |
 | Sudo en la VM | `[PENDIENTE: quién tiene, cómo se gestiona]` — no está en `secrets.txt`, falta documentar de verdad |
 | Orquestación de contenedores | Portainer (Coder, Caddy, Backstage, PostgreSQL) — URL/usuario/password → `secrets.txt` |

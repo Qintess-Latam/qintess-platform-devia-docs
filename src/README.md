@@ -14,6 +14,17 @@ gobernados (mozart). Para el banco, vía Qintess.
 (fuente de verdad real = git, esto es para quien no tenga acceso a GitHub). Si algo cambia,
 el repo manda — esta copia puede quedar desactualizada.
 
+## Accesos directos (producción, sin dominio todavía)
+
+| Servicio | URL |
+|---|---|
+| **Coder** — crear/entrar a workspaces | **https://201.203.104.168:3000** |
+| **Symphony** — portal Backstage, crear repos vía mozart | **https://201.203.104.168:7007** |
+
+Login en ambos: con tu cuenta de GitHub de la organización `Qintess-Latam`. Sin dominio
+propio todavía — se accede por IP pública directa (ver `ACCESOS-Y-CREDENCIALES.md` §1 y
+`MVP.md` para el estado de ese pendiente).
+
 ## Empezar por acá
 
 1. **`ACCESOS-Y-CREDENCIALES.md`** (en esta carpeta) — qué credenciales existen, para qué,
