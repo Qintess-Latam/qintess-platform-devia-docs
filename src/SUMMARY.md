@@ -14,6 +14,8 @@
 
 ## Runbooks
 
+- [Usar Coder](coder-template/RUNBOOK-uso-coder.md)
+- [Usar Symphony](coder-template/RUNBOOK-uso-symphony.md)
 - [GitHub App](coder-template/RUNBOOK-github-app.md)
 - [HTTPS con Caddy](coder-template/RUNBOOK-https-caddy.md)
 - [Backend LLM](coder-template/RUNBOOK-llm-backend.md)

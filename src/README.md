@@ -25,6 +25,13 @@ Login en ambos: con tu cuenta de GitHub de la organización `Qintess-Latam`. Sin
 propio todavía — se accede por IP pública directa (ver `ACCESOS-Y-CREDENCIALES.md` §1 y
 `MVP.md` para el estado de ese pendiente).
 
+## Dónde vive esta carpeta (SharePoint)
+
+La carpeta `Dev-IA` con esta documentación (y los accesos/credenciales reales, que no
+están en este libro público) vive en SharePoint:
+
+[`Software Factory → Dev-IA`](https://resourceitsolutions.sharepoint.com/sites/SAPGlobalDelivery/Software%20Factory/Forms/AllItems.aspx?viewid=0b5a75df-5c16-4940-aeb7-a50a8f96814d)
+
 ## Empezar por acá
 
 1. **`ACCESOS-Y-CREDENCIALES.md`** (en esta carpeta) — qué credenciales existen, para qué,
