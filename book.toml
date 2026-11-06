@@ -1,0 +1,14 @@
+[book]
+authors = ["Qintess-Latam"]
+language = "es"
+src = "src"
+title = "Dev-IA — Documentación del Proyecto"
+description = "Plataforma de workspaces Coder + Claude Code + Copilot por rol, RBAC real, y Symphony (Backstage) para Qintess-Latam."
+
+[output.html]
+additional-css = ["auto-dir.css", "general.css"]
+additional-js = ["custom.js"]
+default-theme = "dark"
+preferred-dark-theme = "coal"
+git-repository-url = "https://github.com/Qintess-Latam"
+git-repository-icon = "fa-github"
