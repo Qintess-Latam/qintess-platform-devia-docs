@@ -11,4 +11,3 @@ additional-js = ["custom.js"]
 default-theme = "dark"
 preferred-dark-theme = "coal"
 git-repository-url = "https://github.com/Qintess-Latam"
-git-repository-icon = "fa-github"
