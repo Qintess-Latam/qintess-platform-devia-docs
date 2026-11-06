@@ -1,9 +1,10 @@
 # Accesos y Credenciales — Dev-IA
 
-> **Los valores reales de los secretos NO están en este documento.** Cada fila marcada
-> `[PENDIENTE]` la completa quien tenga acceso real, directo en el archivo final — nunca
-> pegando el valor en un chat (ni acá, ni en Claude, ni en ningún otro canal sin cifrar).
-> Esto es un **inventario**: qué existe, para qué, y dónde vive — no el secreto en sí.
+> **Los valores reales de los secretos NO están en este documento** — viven en
+> [`secrets/secrets.txt`](./secrets/secrets.txt), en esta misma carpeta. Este documento es el
+> **índice**: qué existe, para qué, y dónde encontrar el valor real. Cada fila marcada
+> `→ secrets.txt` tiene su valor ahí. No se pega ningún secreto en el chat ni en ningún canal
+> sin cifrar.
 
 ## 1 · Infraestructura física
 
@@ -11,10 +12,10 @@
 |---|---|
 | VM / laptop que corre todo | `192.168.50.208` (IP interna, puede cambiar — ver RUNBOOK-vm-qintess-latam.md) |
 | IP pública (port forwarding, sin dominio) | `201.203.104.168` (puertos 3000 → Coder, 7007 → Symphony) |
-| Acceso SSH a la VM | `[PENDIENTE: usuario, método de auth (key/password), quién tiene acceso hoy]` |
-| Sudo en la VM | `[PENDIENTE: quién tiene, cómo se gestiona]` |
-| Orquestación de contenedores | Portainer (Coder, Caddy, Backstage, PostgreSQL) — `[PENDIENTE: URL del panel, quién tiene login]` |
-| Backups | Diarios, de la BD de Coder (ver RUNBOOK-vm-qintess-latam.md) — `[PENDIENTE: destino exacto, retención, quién los puede restaurar]` |
+| Acceso SSH a la VM | `[PENDIENTE: usuario, método de auth (key/password), quién tiene acceso hoy]` — no está en `secrets.txt`, falta documentar de verdad |
+| Sudo en la VM | `[PENDIENTE: quién tiene, cómo se gestiona]` — no está en `secrets.txt`, falta documentar de verdad |
+| Orquestación de contenedores | Portainer (Coder, Caddy, Backstage, PostgreSQL) — URL/usuario/password → `secrets.txt` |
+| Backups | Diarios, de la BD de Coder (ver RUNBOOK-vm-qintess-latam.md) — `[PENDIENTE: destino exacto, retención, quién los puede restaurar]` — no está en `secrets.txt` |
 
 ## 2 · GitHub — organización `Qintess-Latam`
 
@@ -22,12 +23,12 @@
 
 | Credencial | Tipo | Para qué | Dónde vive el secreto | Vence |
 |---|---|---|---|---|
-| OAuth App **"Coder VM"** | GitHub OAuth App | Login de usuarios a Coder (AuthN) | Client Secret: `[PENDIENTE]` — Settings → Developer settings → OAuth Apps → Coder VM | No vence (revocable a mano) |
-| OAuth App **"Qintess Backstage"** | GitHub OAuth App | Login de usuarios a Symphony (AuthN) | Client Secret: `[PENDIENTE]` | No vence |
-| GitHub App **`qintess-latam-rbac-resolver`** | GitHub App | AuthZ: resuelve el rol del usuario por membresía de team (`Members: read`, token auto-rotado ~1h) | Private key `.pem`: `[PENDIENTE: ruta exacta en la VM]` | Private key no vence (se puede rotar) |
+| OAuth App **"Coder VM"** | GitHub OAuth App | Login de usuarios a Coder (AuthN) | Client ID `Ov23li16XNUEsskKUnC7`. Client Secret → `secrets.txt` | No vence (revocable a mano) |
+| OAuth App **"Qintess Backstage"** | GitHub OAuth App | Login de usuarios a Symphony (AuthN) | Client ID `Ov23li6pmECDSrWdcn6d`. Client Secret → `secrets.txt` | No vence |
+| GitHub App **`qintess-latam-rbac-resolver`** | GitHub App | AuthZ: resuelve el rol del usuario por membresía de team (`Members: read`, token auto-rotado ~1h) | App ID `5154850`, Client ID `Iv23liLUmbar7dLgeLJ1`. Private key `.pem`: `[PENDIENTE: ruta exacta en la VM — no está en secrets.txt]` | Private key no vence (se puede rotar) |
 | GitHub App **`qintess-mozart-bot`** | GitHub App | Backstage/mozart: crea repos, equipos, lee billing de Copilot | App ID `5202581`, Installation ID `168285622`. Private key: `~/.config/backstage/secrets/mozart-app.pem` en la VM. Client Secret: `~/.config/backstage/secrets/mozart-app-client-secret` en la VM | Private key no vence; Client Secret regenerable a mano |
 | external-auth OAuth (GitHub) | Token por usuario | Que el workspace actúe como ESE usuario (`git push`, GitHub MCP) | Lo gestiona Coder automáticamente, no hay secreto estático que guardar | Coder lo auto-refresca |
-| PAT personal (uso de desarrollo, legado) | Personal Access Token | Fallback de `gh auth token` si no hay GitHub App configurada | `[PENDIENTE: a quién pertenece hoy]` | **Vence el 2026-12-31** — plan es no depender de él (ya migrado a GitHub Apps en mozart) |
+| PAT **`mozart-backstage-org-token`** (legado) | Personal Access Token | Fallback de `gh auth token` si no hay GitHub App configurada | Token → `secrets.txt` | **Vence el 2026-12-31** — plan es no depender de él (ya migrado a GitHub Apps en mozart) |
 
 **Teams de la org** (5 disciplinas, cada una con sub-teams `-senior-dev`, `-repo-admin`,
 `-release-eng`, y `-appsec`): `qintess-architect`, `qintess-cyber`, `qintess-developers`,
@@ -38,7 +39,7 @@ GitHub, nada más.
 
 | Ítem | Valor |
 |---|---|
-| OAuth App de Atlassian (external-auth) | Client ID/Secret: `[PENDIENTE]` — developer.atlassian.com/console |
+| OAuth App de Atlassian (external-auth) | Client ID/Secret → `secrets.txt` — developer.atlassian.com/console |
 | Modo de distribución | **Debe estar en "Sharing/Distributed"**, no "Development" — si está en Development, solo el dueño puede autorizarla y el resto ve error. Ver gotcha en sección 17 de `MANUAL-TECNICO.md`. |
 | Gotcha de token de 1h | El MCP de Atlassian pide el token fresco a Coder en cada arranque (`coder external-auth access-token atlassian`) — NO usa una copia horneada en build time. Ya resuelto, documentado en `MANUAL-TECNICO.md` sección 17. |
 
